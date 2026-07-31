@@ -20,14 +20,14 @@ Published to:
 ghcr.io/jvjvjvjv/next-testapp
 ```
 
-Tags produced by the workflow:
+Builds are triggered only when pushing a git tag `vX.Y.Z`  
+Tags produced:
 
 - `X.Y.Z` — full semver, from git tag `vX.Y.Z`
 - `X.Y` — minor version
-- `main` — latest push to main
+- `main`
+- `latest`
 - `sha-<short>` — commit SHA
-
-Flux's `ImagePolicy` should use the semver tags.
 
 ## Local development
 
@@ -53,8 +53,7 @@ docker run --rm -p 3000:3000 flux-test-app:0.1.0
 
 The GitHub Actions workflow (`.github/workflows/build.yml`) builds and
 pushes a multi-arch image on every push to `main` and on every `v*.*.*`
-tag. Flux only reacts to semver tags, so **tagging is what triggers a
-rollout**.
+tag. 
 
 ### Step-by-step: bump and release
 
@@ -84,7 +83,7 @@ rollout**.
    ```
 
 4. **Watch the workflow build** at
-   `https://github.com/YOURUSER/jvailionis-flux-test-app/actions`.
+   `https://github.com/jvjvjvjv/next-testapp/actions`.
    Multi-arch builds take ~5–10 minutes (arm64 runs under QEMU emulation).
 
 ## Files
